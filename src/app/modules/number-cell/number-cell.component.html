@@ -1,0 +1,12 @@
+<div [appHighlight]="balance" *ngIf="balance">
+  {{ balance }} BTC
+  <br/>
+  <ng-container *ngIf="computedValue$ | async as computedValue; else loader">
+    <span>
+      {{ computedValue | currency:'USD' }}
+    </span>
+  </ng-container>
+  <ng-template #loader>
+    Waiting for exchange rate...
+  </ng-template>
+</div>

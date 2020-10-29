@@ -1,0 +1,72 @@
+// ** MIXINS **//
+
+/**
+ * Span columns mixins: Basic flex based grid with margin gutter. Ads width to the column and sets the grid.
+ * USAGE: @include span-columns(3, rem(25), rem(25), 'flex-start', 'center', 'div', );
+ * USAGE (resposive): @include span-columns(4, rem(25), rem(25), 'flex-start', 'center', 'div', true);
+ *
+ * @param [Number] $cols = Number of columns.
+ * @param [String] $gutter = Size of gutter between columns.
+ * @param [String] $gutter-bottom = Size of gutter between bottom columns.
+ * @param [String] $justify-content = Flex content alignment horizontal.
+ * @param [String] $align-items = Flex items alignment vertical.
+ * @el [String]    $el = Item of the flex wrapper (sometims we have <li> instead of <div>)
+ * @el [Boolean]   $responsive = When dealing with media queris we have to aditionaly set previous item gutter
+ */
+@mixin span-columns(
+  $cols: 2,
+  $gutter: 25px,
+  $gutter-bottom: 25px,
+  $el: 'div',
+  $responsive: false
+) {
+  $child-before: $cols - 1;
+  $init-width: 100% / $cols;
+  $a: (strip-unit($gutter) * $child-before) / $cols;
+
+  & > #{$el} {
+    flex: 0 0 auto;
+    width: calc(#{$init-width} - #{$a}px);
+    margin-right: $gutter;
+    margin-bottom: $gutter-bottom;
+    &:nth-child(#{$cols}n) {
+      margin-right: 0;
+    }
+    @if $responsive == true {
+      // Avoid child colision on reposive.
+      &:nth-child(#{$child-before}n) {
+        margin-right: $gutter;
+      }
+    }
+  }
+}
+
+/**
+ * Web font mixins: Adds web fonts from selected folder.
+ * USAGE: @include webfont('AlegreyaSans-Bold', 'AlegreyaSans-Bold');
+ *
+ * @param [Number] $width = Number of columns. Default value $xl-width.
+ * @param [Number] $pad = Padding. Default value 0 $grid-gutter.
+ * @param [Number] $max-width = Max width of the container. Default value: null.
+ */
+@mixin font-face($name, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    // sass-lint:disable no-duplicate-properties, indentation
+    font-family: $name;
+    src: url('#{$file-path}.ttf') format('truetype');
+    font-weight: $weight;
+    font-display: swap;
+    font-style: $style;
+  }
+}
+
+@mixin flex(
+  $direction: row,
+  $justify-content: flex-start,
+  $align-items: flex-start
+) {
+  display: flex;
+  flex-flow: $direction wrap;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}

@@ -1,0 +1,179 @@
+// -- GENERAL CSS SETUP & HELPER -- //
+
+// ** Standard Tags
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-size: $em-base;
+  line-height: $base-line-height;
+  font-family: $font-family-base, 'fallback';
+  color: $text-color;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+// ** TYPOGRAPHY
+h1 {
+  margin: 20px 0;
+  font-size: $h1-size;
+  @media only screen and (max-width: $xs-device) {
+    font-size: 27px;
+  }
+  line-height: $h1-line;
+  color: $heading-color;
+  font-family: $font-family-header, 'fallback';
+  font-weight: 700;
+}
+h2 {
+  margin: 0 0 40px 0;
+  font-size: $h2-size;
+  line-height: $h2-line;
+  color: $heading-color;
+  font-family: $font-family-header, 'fallback';
+  font-weight: 700;
+}
+h3 {
+  margin: 0 0 12px 0;
+  font-size: $h3-size;
+  line-height: $h3-line;
+  color: $heading-color;
+  font-weight: bold;
+  font-family: $font-family-header, 'fallback';
+  font-weight: 700;
+}
+h4 {
+  margin: 20px 0;
+  font-size: $h4-size;
+  line-height: $h4-line;
+  color: $heading-color;
+  font-weight: bold;
+  font-family: $font-family-header, 'fallback';
+  font-weight: 700;
+}
+p {
+  margin: 0 0 30px;
+  letter-spacing: 1.1px;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+input[type='color'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='time'],
+input[type='week'],
+textarea {
+  font-size: 16px;
+  font-family: $font-family-base, 'fallback';
+}
+
+hr {
+  display: none;
+}
+
+// ** IMAGES
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// ** LINKS
+a {
+  text-decoration: none;
+  color: $link-color;
+  transition: color 0.3s ease-in-out;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+// ** LIST
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+// ** TEXT
+.text-align-center {
+  text-align: center;
+}
+.text-white {
+  color: white;
+}
+.text-primary {
+  color: $primary-color;
+}
+.text-secondary {
+  color: $secondary-color;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-big {
+  font-size: 2em;
+}
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ** Desktop vs Mobile
+.desktop {
+  display: none;
+}
+.mobile {
+  display: block;
+}
+
+// ** App Styles
+table {
+  width: 100%;
+}
+.background-primary {
+  background: $primary-color;
+}
+.background-secondary {
+  background: $secondary-color;
+}
+.highlight-plus {
+  transition: all ease-out .3;
+  background: rgb(22, 199, 132);
+}
+.highlight-minus {
+  transition: all ease-out .3;
+  background: rgb(234, 57, 67);
+}
+.icon-loading {
+  max-height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 5px 0 10px;
+}
+
+// Desktop / iPad pro breakpoint
+@include breakpoint-md {
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+// -- BREAKPOINTS -- //
+$xxs-device: 321px;
+$xms-device: 375px;
+$xs-device: 480px;
+$sm-device: 767px;
+$md-device: 992px;
+$mg-device: 1230px;
+$ls-device: 1300px;
+$lg-device: 1600px;
+
+// Media queries
+@mixin breakpoint-mg {
+  @media (min-width: #{$mg-device}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  @media (min-width: #{$md-device}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-sm {
+  @media (min-width: #{$sm-device}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xs {
+  @media (min-width: #{$xs-device}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xms {
+  @media (min-width: #{$xms-device}) {
+    @content;
+  }
+}
