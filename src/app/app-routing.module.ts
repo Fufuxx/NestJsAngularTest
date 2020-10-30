@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './routes/home/home.component';
+import { DetailComponent } from './routes/account/detail/detail.component';
+import { AccountComponent } from './routes/account/acount.component';
 
 const routes: Routes = [
   {
     path: 'accounts',
-    component: HomeComponent,
+    component: AccountComponent,
     data: { title: 'Accounts' }
+  },
+  {
+    path: 'accounts/:id',
+    component: DetailComponent,
+    data: { title: 'Details' }
   },
   {
     path: '**',
@@ -17,9 +23,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: 'enabled'
+    })
+  ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

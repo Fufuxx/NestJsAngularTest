@@ -14,6 +14,9 @@
 
 #routeInfos {
   padding: 20px;
+  -moz-box-shadow: 0px 1px 5px 0px #676767;
+  -webkit-box-shadow: 0px 1px 5px 0px #676767;
+  box-shadow: 0px 1px 5px 0px #676767;
   .breadcrumbItem {
     a {
       color: $primary-color;

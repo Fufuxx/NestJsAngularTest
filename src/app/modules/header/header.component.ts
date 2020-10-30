@@ -31,10 +31,13 @@ export class HeaderComponent implements OnInit {
     this.routeTitle$ = this.router.events.pipe(
       filter(e => e instanceof ActivationEnd),
       map((e: ActivationEnd) => {
+        this.setBreadCrumbs();
         return e.snapshot.data.title;
       }),
     );
+  }
 
+  setBreadCrumbs() {
     //Breadcrumbs
     const res = [];
     let trail = '';

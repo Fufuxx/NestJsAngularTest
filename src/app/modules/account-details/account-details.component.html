@@ -1,0 +1,21 @@
+<div *ngIf="account" id="account-details">
+  <h2>{{ account.name }}</h2>
+  <p>{{ account.category }} account</p>
+  <div class="account-balance">
+    {{ account.balance }} BTC (
+      <ng-container *ngIf="computedValues$ | async as computedValues; else loader">
+        {{ computedValues.computedBalance | currency:'USD' }}
+      </ng-container>
+    )
+  </div>
+  <p>
+    Available Balance: {{ account.availableBalance }} BTC (
+      <ng-container *ngIf="computedValues$ | async as computedValues; else loader">
+        {{ computedValues.computedAvailable | currency:'USD' }}
+      </ng-container>
+    )
+  </p>
+  <ng-template #loader>
+    Waiting for exchange rate...
+  </ng-template>
+</div>

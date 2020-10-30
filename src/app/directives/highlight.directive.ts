@@ -16,17 +16,16 @@ export class HighlightDirective implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.appHighlight && changes.appHighlight.currentValue != changes.appHighlight.previousValue) {
       if(changes.appHighlight.currentValue > changes.appHighlight.previousValue) {
-        // this.element.parentElement.parentElement.parentElement.classList.add('highlight-plus');
-        this.element.closest('tr').classList.add('highlight-plus');
+        this.element.closest('.highlight-element').classList.add('highlight-plus');
         setTimeout(
-          () => this.element.closest('tr').classList.remove('highlight-plus')
+          () => this.element.closest('.highlight-element').classList.remove('highlight-plus')
           , 1000
         );
       }
       if(changes.appHighlight.currentValue < changes.appHighlight.previousValue) {
-        this.element.closest('tr').classList.add('highlight-minus');
+        this.element.closest('.highlight-element').classList.add('highlight-minus');
         setTimeout(
-          () => this.element.closest('tr').classList.remove('highlight-minus')
+          () => this.element.closest('.highlight-element').classList.remove('highlight-minus')
           , 2000
         );
       }

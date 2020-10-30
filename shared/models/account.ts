@@ -1,4 +1,5 @@
 export class Account {
+  id!: string;
   name!: string;
   category!: string;
   tags: string[] = [];
@@ -13,6 +14,7 @@ export function generateAccounts(number: number) {
   for( let i=0; i<=number; i++ ) {
     const BALANCE = Number((Math.random() * 20).toFixed(8));
     accounts.push({
+      id: '' + i,
       name: `Account ${i}`,
       category: CATEGORIES[Math.floor(Math.random() * CATEGORIES.length)],
       tags: [TAGS[Math.floor(Math.random() * TAGS.length)]],
