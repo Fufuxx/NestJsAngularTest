@@ -9,7 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
-import { NumberCellModule } from './../number-cell/number-cell.module';
+import { HighlightModule } from './../../directives/highlight.directive';
+import { ComputedValueModule } from './../computed-value/computed-value.module';
 
 import { DataTableComponent } from './datatable.component';
 import { TypeofPipe } from './../../pipes/typeof.pipe';
@@ -30,7 +31,8 @@ const MATERIAL_MODULES = [
   imports: [
     CommonModule,
     RouterModule,
-    NumberCellModule,
+    HighlightModule,
+    ComputedValueModule,
     ...MATERIAL_MODULES
   ],
   exports: [DataTableComponent]

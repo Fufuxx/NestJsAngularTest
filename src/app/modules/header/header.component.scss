@@ -1,7 +1,10 @@
 @import '_variables';
+@import 'helpers/_mixins';
 
 #header {
   height: 55px;
+  
+  @include flex(row, center, center);
   
   h3 {
     line-height: 55px;

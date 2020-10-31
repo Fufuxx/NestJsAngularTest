@@ -5,7 +5,6 @@ import { Directive, OnChanges, Input, SimpleChanges, NgModule, ElementRef } from
   selector: '[appHighlight]'
 })
 export class HighlightDirective implements OnChanges {
-
   @Input() public appHighlight: number;
   element: HTMLElement;
 
@@ -13,29 +12,39 @@ export class HighlightDirective implements OnChanges {
     this.element = el.nativeElement;
   }
 
+  pulse(element: Element, className: string) {
+    element.classList.add(className);
+    setTimeout(
+      () => element.classList.remove(className),
+      1500
+    );
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes.appHighlight && changes.appHighlight.currentValue != changes.appHighlight.previousValue) {
+      // -> Check if row from Account Table - If not, Account detail text
+      const element = this.element.closest('.highlight-element')
+        ? this.element.closest('.highlight-element')
+        : this.element;
+      // -> Class name prefix for row and text
+      const classPref = this.element.closest('.highlight-element')
+        ? 'highlight-row'
+        : 'highlight-text';
+
       if(changes.appHighlight.currentValue > changes.appHighlight.previousValue) {
-        this.element.closest('.highlight-element').classList.add('highlight-plus');
-        setTimeout(
-          () => this.element.closest('.highlight-element').classList.remove('highlight-plus')
-          , 1000
-        );
+        this.pulse(element, classPref + '-plus');
       }
       if(changes.appHighlight.currentValue < changes.appHighlight.previousValue) {
-        this.element.closest('.highlight-element').classList.add('highlight-minus');
-        setTimeout(
-          () => this.element.closest('.highlight-element').classList.remove('highlight-minus')
-          , 2000
-        );
+        this.pulse(element, classPref + '-minus');
       }
     }
-  } 
-}
+  }
+} 
 
 @NgModule({
   imports: [CommonModule],
   declarations: [HighlightDirective],
   exports: [HighlightDirective],
 })
+
 export class HighlightModule {}

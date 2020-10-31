@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
 import { Account } from '../../../../shared/models/account';
+import { Transaction } from 'shared/models/transaction';
 
 export class Column {
   label!: string;
@@ -23,8 +24,7 @@ export class DataTable<T> {
 })
 
 export class DataTableComponent {
-  // Table
-  @Input() dataTable: DataTable<Account>;
+  @Input() dataTable: DataTable<(Account | Transaction)>;
   columns: Column[];
   displayedColumns: string[];
   dataSource = new MatTableDataSource;
@@ -33,10 +33,10 @@ export class DataTableComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    // Columns
+    // -> Columns
     this.columns = this.dataTable.columns;
     this.displayedColumns = this.columns.map((e: Column) => e.label);
-    // Source
+    // -> Source
     this.dataSource = new MatTableDataSource(this.dataTable.data);
   }
 

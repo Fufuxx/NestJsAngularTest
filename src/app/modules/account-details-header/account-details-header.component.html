@@ -1,0 +1,17 @@
+<div *ngIf="account" id="account-details">
+  <h2>{{ account.name }}</h2>
+  <p>{{ account.category }} account</p>
+  <div [appHighlight]="account.balance" class="account-balance">
+    {{ account.balance }} BTC (
+      <app-computed-value [value]="account.balance"></app-computed-value>
+    )
+  </div>
+  <p>
+    Available Balance: {{ account.availableBalance }} BTC (
+      <app-computed-value [value]="account.availableBalance"></app-computed-value>
+    )
+  </p>
+  <ng-template #loader>
+    Waiting for exchange rate...
+  </ng-template>
+</div>

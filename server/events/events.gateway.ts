@@ -10,24 +10,31 @@ export class EventsGateway {
   @WebSocketServer()
   server: Server;
 
-  clients: any[];
+  clients: WebSocket[];
 
   afterInit() {
     this.clients = [];
-    // setInterval(
-    //   () => this.broadcast(this.clients),
-    //   10000
-    // );
+    // Send new Rate every 10s
+    setInterval(
+      () => this.broadcast(this.clients),
+      30000
+    );
   }
 
-  handleConnection(client: any) {
+  // On connection
+  handleConnection(client: WebSocket) {
     this.clients.push(client);
+    // Send First rate
     this.broadcast(this.clients);
   }
 
-  async broadcast(clients: any[]) {
-    const res = await axios.get('https://blockchain.info/ticker');
-    const newRate = res.data?.USD?.last;
+  // Broadcast to Clients
+  async broadcast(clients: WebSocket[]) {
+    // -> Real deal open BTC rate api
+    // const res = await axios.get('https://blockchain.info/ticker');
+    // const newRate = res.data?.USD?.last;
+
+    const newRate = Number(Math.floor((Math.random() * 7000) + 5000));
     if(newRate) {
       clients.forEach(c => c.send(
         JSON.stringify(

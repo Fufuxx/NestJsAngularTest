@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderModule } from './modules/header/header.module';
 import { DataTableModule } from './modules/datatable/datatable.module';
-import { AccountDetailsModule } from './modules/account-details/account-details.module';
+import { AccountDetailsHeaderModule } from './modules/account-details-header/account-details-header.module';
 
 import { AppComponent } from './app.component';
 
@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
     NoopAnimationsModule,
     HttpClientModule,
     HeaderModule,
-    AccountDetailsModule,
+    AccountDetailsHeaderModule,
     DataTableModule
   ],
   bootstrap: [AppComponent]

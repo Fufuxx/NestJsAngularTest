@@ -1,20 +1,16 @@
 import { Component, Input, OnChanges } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { DataService } from './../../services/data.service';
 
 @Component({
-  selector: 'app-number-cell',
-  templateUrl:'./number-cell.component.html',
-  styles: [`
-    :host{ display: block; padding: 5px; }
-  `]
+  selector: 'app-computed-value',
+  templateUrl: './computed-value.component.html'
 })
 
-export class NumberCellComponent implements OnChanges {
-  @Input() balance: number;
+export class ComputedValueComponent implements OnChanges {
+  @Input() value: number = 0;
   computedValue$: Observable<number>;
 
   constructor(private dataService: DataService) {
@@ -23,8 +19,7 @@ export class NumberCellComponent implements OnChanges {
 
   ngOnChanges(changes) {
     this.computedValue$ = this.dataService.exchangeRate$.pipe(
-      map((rate: number) => this.balance * rate)
+      map((rate: number) => this.value * rate)
     );
   }
-
 }

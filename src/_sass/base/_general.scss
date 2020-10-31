@@ -153,13 +153,21 @@ table {
 .background-secondary {
   background: $secondary-color;
 }
-.highlight-plus {
+.highlight-row-plus {
   transition: all ease-out .3;
   background: rgb(22, 199, 132);
 }
-.highlight-minus {
+.highlight-row-minus {
   transition: all ease-out .3;
   background: rgb(234, 57, 67);
+}
+.highlight-text-plus {
+  transition: all ease-out .3;
+  color: rgb(22, 199, 132);
+}
+.highlight-text-minus {
+  transition: all ease-out .3;
+  color: rgb(234, 57, 67);
 }
 .icon-loading {
   max-height: 30px;

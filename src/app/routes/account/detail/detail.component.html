@@ -1,3 +1,4 @@
 <div *ngIf="account$ | async as account" id="details">
-  <app-account-details [account]="account"></app-account-details>
+  <app-account-details-header [account]="account"></app-account-details-header>
+  <app-datatable [dataTable]="dataTable"></app-datatable>
 </div>
