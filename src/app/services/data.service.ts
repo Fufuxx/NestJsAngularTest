@@ -7,7 +7,7 @@ import { map, startWith } from 'rxjs/operators';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 
 import { environment } from './../../environments/environment';
-import { Account } from '../../../shared/models/account';
+import { Account, generateAccounts } from '../../../shared/models/account';
 import { Transaction } from '../../../shared/models/transaction';
 
 @Injectable({ providedIn: 'root' })
@@ -58,8 +58,7 @@ export class DataService implements OnDestroy {
     //     interval(2000).pipe(startWith(0))
     //   ]).pipe(
     //     map( ([accounts]) => {
-    //       return accounts;
-    //       // return this.triggerTransaction(accounts);
+    //       return this.triggerTransaction(accounts);
     //     })
     //   );
     // -> Local Change Exchange Rate Emit

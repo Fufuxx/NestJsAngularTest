@@ -14,7 +14,7 @@ export class EventsGateway {
 
   afterInit() {
     this.clients = [];
-    // Send new Rate every 10s
+    // -> Send new Rate every 30s
     setInterval(
       () => this.broadcast(this.clients),
       30000

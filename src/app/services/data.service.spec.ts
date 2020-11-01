@@ -26,6 +26,7 @@ describe('Angular - DataService', () => {
     const tx = accounts
       .map(acc => acc.transactions.length)
       .reduce((accumulator, current) => accumulator + current, 0);
+    // -> Generate
     let result = dataService.triggerTransaction(accounts);
     const tx_after = result
       .map(acc => acc.transactions.length)
@@ -33,9 +34,8 @@ describe('Angular - DataService', () => {
 
     // Should return array of 5 accounts
     expect(result.length).toBe(5);
-    // 1 additional Transaction
-    expect(tx_after).toBe(tx + 1);
-    
+    // Should have 1 additional Transaction
+    expect(tx_after).toBe(tx + 1); 
   });
 
 });
